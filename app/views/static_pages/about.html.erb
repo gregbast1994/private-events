@@ -1,0 +1,26 @@
+<% provide(:title, 'About') %>
+
+<h1>What is "Private Events"</h1>
+<h2>A simple app which allows users to create events and allows other users to signup for created events.</h2>
+
+<%= link_to 'https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations#null' %>
+
+<h3>Here's how we are going to do it:</h3>
+<h4>users & sign up</h4>
+<ul>
+    <li>rails g model User name:string email:string</li>
+    <li>users controller new/show/destroy</li>
+    <li>allow users to sign in</li>
+    <li>store the session</li>
+</ul>
+
+<h4>events</h4>
+<ul>
+    <li>rails g model Event title:string description:string user:reference when:datetime where:string</li>
+    <li>show event</li>
+    <li>allow users to signup for event</li>
+    <li>show event on user/show</li>
+    <li>show all events on homepage</li>
+    <li>create events form</li>
+    <li>allow owners to edit/delete events</li>
+</ul>
