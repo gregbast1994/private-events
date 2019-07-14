@@ -11,8 +11,13 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <%= render 'layouts/flash' %>
     <div class="container">
       <%= yield %>
+      <pre>
+        <%= params.inspect %>
+    </pre>
     </div>
+    
   </body>
 </html>

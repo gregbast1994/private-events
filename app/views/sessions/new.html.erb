@@ -1,0 +1,14 @@
+<% provide(:title, 'Log in') %>
+
+<h1>Login</h1>
+
+<p>Not a user yet? <%= link_to 'Click here to register', new_user_path %></p>
+
+<%= form_for :session do |f| %>
+    <p>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    </p>
+
+    <%= f.submit 'Login', class: 'btn btn-success' %>
+<% end %>
