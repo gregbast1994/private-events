@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(name: 'greg', email: 'greg@drunk.kiwi')
+
+10.times do |n|
+    User.create!(name: Faker::Games::WorldOfWarcraft.hero,
+                 email: Faker::Internet.email )
+end
+
+User.first(5).each do |user| 
+    user.events.create!(title: Faker::Lorem.sentence(5),
+                        description: Faker::Movies::HarryPotter.quote,
+                        when: rand(50).days.from_now,
+                        where: Faker::Movies::HarryPotter.location )
+end

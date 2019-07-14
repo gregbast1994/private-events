@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     before_save :downcase_email
 
+    has_many :events
+
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
 
