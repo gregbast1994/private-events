@@ -16,6 +16,6 @@ end
 User.first(5).each do |user| 
     user.events.create!(title: Faker::Lorem.sentence(5),
                         description: Faker::Movies::HarryPotter.quote,
-                        when: rand(50).days.from_now,
-                        where: Faker::Movies::HarryPotter.location )
+                        event_date: Faker::Date.forward(354),
+                        location: Faker::Movies::HarryPotter.location )
 end

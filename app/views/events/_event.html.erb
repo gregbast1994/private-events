@@ -1,8 +1,20 @@
-<div class="col-12 col-sm-6 col-md-4 card">
+<div id="event-<%= event.id %>" class="col-12 col-md-6 col-lg-4 card event">
+
     <div class="card-body">
-        <h5 class="card-title"><%= event.where %></h5>
-        <small><%= event.datetime %></small>
-        <p class="card-text"><%= event.description %></p>
-        <%= link_to 'View event', event %>
+        <%= link_to event_image(event), event %>
+        
+        <div class="d-flex pt-2">
+            <div class="flashy-date mr-4 text-center left">
+                <span class="month"><%= event.event_date.strftime("%b") %></span>
+                <span class="day"><%= event.event_date.day %></span>
+            </div>
+            <div class="right">
+                <h5 class="card-title m-0"><%= link_to event.title, event, class: 'link-normal' %></h5>
+                <div class="details">
+                    <%= event.formatted_date %>
+                    <p class="card-text"><%= event.location %></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

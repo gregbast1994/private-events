@@ -1,2 +1,23 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+a.link-normal{
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.flashy-date{
+    .month{
+        color: red;
+        text-transform: uppercase;
+    }
+}
+
+.event{
+    .right{
+        .details{
+            font-size: 12px;
+            color: rgba(0,0,0,0.5)
+        }
+    }
+}

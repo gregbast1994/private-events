@@ -1,12 +1,13 @@
 class Event < ApplicationRecord
     belongs_to :user
-
+    mount_uploader :thumbnail, ThumbnailUploader
+    
     validates :title, presence: true
-    validates :when, presence: true
-    validates :where, presence: true
+    validates :event_date, presence: true
+    validates :location, presence: true
     validates :user_id, presence: true
 
-    def datetime
-        self.when.strftime("%A, %b %d %Y @ %H:%M %p")
+    def formatted_date
+        self.event_date.strftime("%A, %b %d, %H:%M %p")
     end
 end

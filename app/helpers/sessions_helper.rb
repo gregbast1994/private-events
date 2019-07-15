@@ -1,19 +1,19 @@
 module SessionsHelper
     def log_in(user)
-        session[:id] = user.id unless logged_in? 
+        session[:user_id] = user.id unless logged_in? 
     end
 
     def current_user
-        @current_user ||= User.find(session[:id])
-    end
-
-    def logged_in?
-        !session[:id].nil?
+        @current_user ||= User.find(session[:user_id])
     end
 
     def log_out
         @current_user = nil
-        session[:id] = nil
+        session[:user_id] = nil
+    end
+
+    def logged_in?
+        !session[:user_id].nil?
     end
         
 end

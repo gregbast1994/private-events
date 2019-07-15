@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.1'
 
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'jquery-rails'
 gem 'faker'
 

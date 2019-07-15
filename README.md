@@ -12,7 +12,7 @@ Here's how we are going to do it:
 * store the session
 
 ### events
-* rails g model Event title:string description:string user:reference when:datetime where:string
+* rails g model Event title:string description:string user:reference datetime:datetime location:string
 * show event
 * allow users to signup for event
 * show event on user/show

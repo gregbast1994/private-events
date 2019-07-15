@@ -3,8 +3,9 @@ class CreateEvents < ActiveRecord::Migration[5.2]
     create_table :events do |t|
       t.string :title
       t.string :description
-      t.string :where
-      t.datetime :when
+      t.string :price
+      t.string :location
+      t.datetime :event_date
       t.references :user
 
       t.timestamps
