@@ -7,7 +7,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <% if logged_in? %>
-        <%= link_to 'Logout', logout_path, class: 'nav-link', method: :delete %>
+            <%= render 'layouts/account_links' %>
         <% else %>
         <li class="nav-item active">
             <%= link_to 'Login', login_path, class: 'nav-link' %>
