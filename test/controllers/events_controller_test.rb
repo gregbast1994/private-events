@@ -9,7 +9,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     get event_path(@event)
     assert_redirected_to login_path
     assert_not_empty flash[:info]
-    log_in_as(@event.user)
+    log_in_as(@event.creator)
     follow_redirect!
     assert_template 'events/show'
   end

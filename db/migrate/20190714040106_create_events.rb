@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :price
       t.string :location
       t.datetime :event_date
-      t.references :user
+      t.references :creator
 
       t.timestamps
     end
