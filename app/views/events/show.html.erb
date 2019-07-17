@@ -1,3 +1,39 @@
 <% provide(:title, @event.title) %>
 
-<%= render @event %>
+<div class="mb-4">
+    <h1 class="display-4"><%= @event.title %></h1>
+    <%= event_image(@event) %>
+</div>
+<div id="event-<%= @event.id %>" class="event show row">
+    <div class="col-12 col-sm-8">
+        <h2>Description</h2>
+        <%= @event.description %>
+    </div>
+    <div class="col">
+        <h3>Are you going?</h3>
+        <div class="attend-event d-flex justify-content-between pb-4">
+            <span>
+                <%= link_to fa_icon('check', text: 'Going', class: 'text-success'), 
+                        "#", class: 'btn btn-outline-success' %>
+            </span>
+            <span>
+                <%= link_to fa_icon('times', text: 'Reject', class: 'text-danger'), 
+                        "#", class: 'btn btn-outline-danger' %>
+            </span>
+        </div>
+        <table class="table info">
+            <tr>
+                <th>When</th>
+                <td><%= @event.formatted_date %></td>
+            </tr>
+            <tr>
+                <th>Where</th>
+                <td><%= @event.location %></td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td><%= link_to @event.user.email, @event %></td>
+            </tr>
+        </table>
+    </div>
+</div>

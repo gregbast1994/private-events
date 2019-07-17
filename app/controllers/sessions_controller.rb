@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email] )
     if @user
       log_in @user
-      redirect_to @user
+      redirect_back_or(@user)
     else
       flash.now[:danger] = "No user by that name..."
       render 'new'

@@ -15,5 +15,14 @@ module SessionsHelper
     def logged_in?
         !session[:user_id].nil?
     end
+
+    def store_location
+        session[:original_url] = request.original_url if request.get?
+    end
+
+    def redirect_back_or(default)
+        redirect_to (session[:original_url] || default)
+        session.delete(:original_url)
+    end
         
 end

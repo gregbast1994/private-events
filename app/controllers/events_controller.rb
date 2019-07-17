@@ -25,10 +25,4 @@ class EventsController < ApplicationController
                                       :location, :description)
     end
 
-    def require_login
-        unless logged_in?
-            flash[:info] = "You must log in first."
-            redirect_to login_path
-        end
-    end
 end

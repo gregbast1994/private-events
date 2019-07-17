@@ -7,6 +7,7 @@ gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 gem 'jquery-rails'
 gem 'faker'
+gem 'font-awesome-rails'
 
 gem 'rails', '~> 5.2.3'
 gem 'sqlite3'

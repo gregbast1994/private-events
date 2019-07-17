@@ -1,5 +1,7 @@
 class Event < ApplicationRecord
     belongs_to :user
+    has_many :attendees, :class_name => "User"
+    
     mount_uploader :thumbnail, ThumbnailUploader
     
     validates :title, presence: true
