@@ -1,7 +1,15 @@
 require 'test_helper'
 
 class RsvpTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  
+  test 'attended_event_id should be present' do
+    @rsvp = Rsvp.new(attended_event_id: 1)
+    assert_not @rsvp.valid?
+  end
+
+  test 'attendee_id should be present' do
+    @rsvp = Rsvp.new(attendee_id: 1)
+    assert_not @rsvp.valid?
+  end
+    
 end

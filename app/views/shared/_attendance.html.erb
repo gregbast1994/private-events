@@ -1,0 +1,22 @@
+<div class="attend-event">
+    <h4>Are you coming?</h4>
+    <div id="attending-form" class="d-flex pb-4">
+        <span>
+            <%= link_to fa_icon('check', text: 'I am', class: 'text-success'), 
+                    rsvps_url(@rsvp, :event_id => @event.id),
+                    method: :post,
+                    class: 'btn btn-outline-success' %>
+        </span>
+        <span>
+            <%= link_to fa_icon('times', text: 'No thanks', class: 'text-danger'), 
+                    "#", class: 'btn btn-outline-danger' %>
+        </span>
+    </div>
+
+    <% if @event.attendees.any? %>
+    <h4>Guest list</h4>
+        <ul class="event-attendees list-group list-group-flush">
+            <%= render @event.attendees %>
+        </ul>
+    <% end %>
+</div>
