@@ -8,9 +8,8 @@ class CreateRsvps < ActiveRecord::Migration[5.2]
     end
 
     add_foreign_key :rsvps, :events, :column => :attended_event_id
-    add_index :rsvps, :attended_event_id
-
     add_foreign_key :rsvps, :events, :column => :attendee_id
-    add_index :rsvps, :attendee_id
+
+    add_index :rsvps, [:attended_event_id, :attendee_id], unique: true
   end
 end

@@ -30,8 +30,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_191812) do
     t.integer "attendee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["attended_event_id"], name: "index_rsvps_on_attended_event_id"
-    t.index ["attendee_id"], name: "index_rsvps_on_attendee_id"
+    t.index ["attended_event_id", "attendee_id"], name: "index_rsvps_on_attended_event_id_and_attendee_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

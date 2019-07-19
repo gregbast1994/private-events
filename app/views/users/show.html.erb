@@ -2,10 +2,10 @@
 
 <div class="w-50 mx-auto">
     <h1><%= @user.name %> </h1>
-    <% unless @events.nil? %>
-        <h2>Posted events</h2>
+    <% unless @attended_events.nil? %>
+        <h2>Attending events</h2>
         <div class="row">
-            <%= render @events %>
+            <%= render @attended_events %>
         </div>
     <% end %>
 </div>

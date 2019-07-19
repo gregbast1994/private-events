@@ -1,6 +1,5 @@
 class RsvpsController < ApplicationController
     before_action :require_login
-    before_action :not_get_method
 
     def create
         @rsvp = current_user.rsvps.build(attended_event_id: params[:event_id])
@@ -20,10 +19,6 @@ class RsvpsController < ApplicationController
 
     private
     def rsvp_params
-        params.require(:rsvp).permit(:attended_event_id)
-    end
-
-    def not_get_method
-        # redirect_to root_url unless post? || delete? || put?
+        params.require(:rsvp).permit(:attended_event_id, :going)
     end
 end
