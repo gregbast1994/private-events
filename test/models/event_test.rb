@@ -3,6 +3,7 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
   def setup
     @user = users(:greg)
+    @other_user = users(:adina)
     @event = @user.events.build(title: 'My b-day',
                          description: 'Lets have fun!',
                          event_date: 42.days.from_now,

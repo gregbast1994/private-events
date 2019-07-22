@@ -14,4 +14,8 @@ class Event < ApplicationRecord
     def formatted_date
         self.event_date.strftime("%A, %b %d, %H:%M %p")
     end
+
+    def going?(user)
+        self.attendees.find_by(id: user.id)
+    end
 end

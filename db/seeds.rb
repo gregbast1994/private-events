@@ -18,4 +18,6 @@ User.first(5).each do |user|
                         description: Faker::Movies::HarryPotter.quote,
                         event_date: Faker::Date.forward(354),
                         location: Faker::Movies::HarryPotter.location )
+    event = Event.find(rand(Event.count) + 1)
+    user.rsvps.create!( attended_event_id: event.id )
 end

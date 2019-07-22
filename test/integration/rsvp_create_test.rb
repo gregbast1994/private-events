@@ -6,7 +6,7 @@ class RsvpCreateTest < ActionDispatch::IntegrationTest
     @event = @user.events.first
   end
 
-  test 'allow users to attend events' do
+  test 'allow users to attend events and then leave the event' do
     get event_path(@event)
     assert_redirected_to login_path
     log_in_as(@user)
@@ -18,5 +18,8 @@ class RsvpCreateTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'events/show'
     assert_select 'ul.event-attendees'
+    assert_difference 'Rsvp.count' do
+      delete :destroy, rsvp_path(@user.rsvps.find_by(attended_event_id: @event.id))
+    end
   end
 end

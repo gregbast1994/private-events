@@ -4,7 +4,7 @@ class RsvpsController < ApplicationController
     def create
         @rsvp = current_user.rsvps.build(attended_event_id: params[:event_id])
         if @rsvp.save
-            flash.now[:success] = "You're going!"
+            flash.now[:success] = "Thanks"
         else
             flash.now[:danger] = "Error"
         end
@@ -15,10 +15,13 @@ class RsvpsController < ApplicationController
     end
 
     def destroy
+        @rsvp = current_user.rsvps.find_by(id: params[:id])
+        @rsvp.destroy if @rsvp
+        redirect_back fallback_location: request.referer
     end
 
     private
     def rsvp_params
-        params.require(:rsvp).permit(:attended_event_id, :going)
+        params.require(:rsvp).permit(:attended_event_id)
     end
 end
