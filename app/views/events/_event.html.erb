@@ -1,4 +1,4 @@
-<div id="event-<%= event.id %>" class="col-12 col-lg-4 card event mb-2">
+<div id="event-<%= event.id %>" class="event border m-1">
     <div class="card-body">
         <%= link_to event_image(event), event %>
         
@@ -13,6 +13,9 @@
                     <%= event.formatted_date %>
                     <p class="card-text"><%= event.location %></p>
                 </div>
+                <span class="attending text-muted">
+                    <%= fa_icon('user', text: event.attendees.count ) %>
+                </span>
             </div>
         </div>
     </div>

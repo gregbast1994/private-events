@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @events = Event.all
+    @past = Event.past
+    @future = Event.future
   end
 
   def about

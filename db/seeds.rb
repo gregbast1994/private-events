@@ -13,10 +13,10 @@ User.create!(name: 'greg', email: 'greg@drunk.kiwi')
                  email: Faker::Internet.email )
 end
 
-User.first(5).each do |user| 
-    user.events.create!(title: Faker::Lorem.sentence(5),
+User.all.each do |user| 
+    user.events.create!(title: Faker::Marketing.buzzwords,
                         description: Faker::Movies::HarryPotter.quote,
-                        event_date: Faker::Date.forward(354),
+                        event_date: Faker::Date.between(6.months.ago, 6.months.from_now),
                         location: Faker::Movies::HarryPotter.location )
     event = Event.find(rand(Event.count) + 1)
     user.rsvps.create!( attended_event_id: event.id )
