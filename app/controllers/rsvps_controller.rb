@@ -15,9 +15,8 @@ class RsvpsController < ApplicationController
     end
 
     def destroy
-        @rsvp = current_user.rsvps.find_by(id: params[:id])
-        @rsvp.destroy if @rsvp
-        redirect_back fallback_location: request.referer
+        @rsvp = current_user.rsvps.find_by(id: params[:id]).delete
+        redirect_back fallback_location: root_url
     end
 
     private

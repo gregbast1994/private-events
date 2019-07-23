@@ -13,13 +13,15 @@ class RsvpCreateTest < ActionDispatch::IntegrationTest
     assert_redirected_to @event
     assert_difference @user.attended_events do
       post rsvps_path, params: { event_id: @event.id }
+      rsvp = assigns(:rsvp)
     end
+    @user.reload
     assert_redirected_to @event
     follow_redirect!
     assert_template 'events/show'
     assert_select 'ul.event-attendees'
-    assert_difference 'Rsvp.count' do
-      delete :destroy, rsvp_path(@user.rsvps.find_by(attended_event_id: @event.id))
+    assert_difference 'Rsvp.count', -1 do
+      delete rsvp_path(@user.rsvps.last.id)
     end
   end
 end

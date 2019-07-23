@@ -7,3 +7,13 @@ birthday:
   location: MY House
   creator: greg
 
+<% 5.times do |x| %>
+event-<%= x %>:
+  id: <%= x %>
+  title: <%= Faker::Company.name %>
+  description: <%= Faker::Company.bs %>
+  event_date: <%= Faker::Date.forward(rand(100) + 1) %>
+  location: <%= Faker::Address.full_address %>
+  creator: greg
+  <% end %>
+
