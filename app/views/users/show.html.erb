@@ -1,11 +1,13 @@
 <% provide(:title, "User #{@user.name} ") %>
 
-<div class="w-50 mx-auto">
-    <h1><%= @user.name %> </h1>
-    <% unless @attended_events.nil? %>
+<h1><%= @user.name %> </h1>
+<div class="row">
+    <div class="col-6">
+        <h2>Created events</h2>
+        <%= render @user.events %>
+    </div>
+    <div class="col-6">
         <h2>Attending events</h2>
-        <div class="row">
-            <%= render @attended_events %>
-        </div>
-    <% end %>
+        <%= render @attended_events %>
+    </div>
 </div>

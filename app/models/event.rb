@@ -3,7 +3,11 @@ class Event < ApplicationRecord
     has_many :rsvps, foreign_key: 'attended_event_id'
     has_many :attendees, :through => :rsvps,
                          :source => :attendee
-    
+
+    default_scope -> { order(created_at: :desc) }
+    scope :past, -> { where("event_date < ?", Time.now) }
+    scope :future, -> { where("event_date > ?", Time.now) }
+
     mount_uploader :thumbnail, ThumbnailUploader
     
     validates :title, presence: true
