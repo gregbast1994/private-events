@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:new, :create, :show]
   resources :rsvps, :only => [:create, :update, :destroy]
+  resources :invites, :only => [:create, :destroy]
   resources :events
 end

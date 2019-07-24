@@ -7,6 +7,9 @@ class User < ApplicationRecord
     has_many :attended_events, :through => :rsvps,
                                :source => :attended_event
 
+    has_many :invitations, foreign_key: 'receiver_id', 
+                           class_name: 'Invite'
+
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
 

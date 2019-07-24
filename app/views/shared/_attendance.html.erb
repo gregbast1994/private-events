@@ -19,7 +19,12 @@
     </div>
 
     <% if @event.attendees.any? %>
-        <h4>Guest list</h4>
+        <div class="d-flex pb-2">
+            <h4>Whos going?</h4>
+            <%= link_to 'Invite more', invites_path(event: @event.id),
+                                       method: :post,
+                                       class: 'btn btn-success btn-xs ml-auto' %>
+        </div>
         <ul class="event-attendees list-group list-group-flush">
             <%= render @event.attendees %>
         </ul>
