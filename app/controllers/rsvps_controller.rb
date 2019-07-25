@@ -8,6 +8,7 @@ class RsvpsController < ApplicationController
         else
             flash.now[:danger] = "Error"
         end
+        maybe_delete_invite(current_user.invitation_for(params[:event_id]))
         redirect_back fallback_location: event_path(params[:event_id])
     end
 

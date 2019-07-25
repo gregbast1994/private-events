@@ -1,0 +1,6 @@
+<% if invite %>
+    <div class="d-flex justify-content-between">
+        <p><%= invite.sender.name %> invited you to <%= invite.event.title %></p>
+        <%= link_to 'Accept', rsvps_url(@rsvp, :event_id => invite.event.id), method: :post %>
+    </div>
+<% end %>

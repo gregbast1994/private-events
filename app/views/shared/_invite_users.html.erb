@@ -1,13 +1,15 @@
-<div class="col-12">
-    <h4>Invite people</h4>
-    <div class="card">
-        <% @users.each do |user| %>
-            <div class="d-flex justify-content-between p-2">
-                <span class="user-name"><%= user.name %></span>
-                <%= link_to 'Invite', 
-                            invites_url(@invite, receiver_id: user.id, event_id: params[:id]),
-                            method: :post,
-                            class: 'btn btn-sm btn-primary' %>
-            </div>
-        <% end %>
-</div>
+<% if @users %>
+    <div class="col-12">
+        <h4>Invite people</h4>
+        <div class="card">
+            <% @users.each do |user| %>
+                <div class="d-flex justify-content-between p-2">
+                    <span class="user-name"><%= user.name %></span>
+                    <%= link_to 'Invite', 
+                                invites_url(@invite, receiver_id: user.id, event_id: params[:id]),
+                                method: :post,
+                                class: 'btn btn-sm btn-primary' %>
+                </div>
+            <% end %>
+    </div>
+<% end %>

@@ -4,6 +4,10 @@ class Event < ApplicationRecord
     has_many :attendees, :through => :rsvps,
                          :source => :attendee
 
+    has_many :invites, foreign_key: 'event_id'
+    has_many :invited_users, :through => :invites,
+    :source => :receiver
+
     default_scope -> { order(created_at: :desc) }
     scope :past, -> { where("event_date < ?", Time.now) }
     scope :future, -> { where("event_date > ?", Time.now) }
