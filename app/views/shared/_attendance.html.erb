@@ -1,32 +1,26 @@
 <div class="attend-event">
-    <h4>Are you coming?</h4>
-    <div id="attending-form" class="d-flex pb-4">
-        <% unless @event.going?(current_user) %>
-            <span>
-                <%= link_to fa_icon('check', text: 'Going', class: 'text-success'), 
-                        rsvps_url(@rsvp, :event_id => @event.id),
-                        method: :post,
-                        class: 'btn btn-outline-success' %>
-            </span>
-        <% else %>
-            <span>
-                <%= link_to fa_icon('times', text: 'Not going', class: 'text-danger'), 
-                            rsvp_url(current_user.rsvps.find_by(attended_event_id: @event.id)),
-                            method: :delete,
-                            class: 'btn btn-outline-danger' %>
-            </span>
-        <% end %>
-    </div>
-
+    <h4>Guest list</h4>
     <% if @event.attendees.any? %>
-        <div class="d-flex pb-2">
-            <h4>Whos going?</h4>
-            <%= link_to 'Invite more', invites_path(event: @event.id),
-                                       method: :post,
-                                       class: 'btn btn-success btn-xs ml-auto' %>
-        </div>
-        <ul class="event-attendees list-group list-group-flush">
+        <ul class="event-attendees list-group list-group-flush mb-2">
             <%= render @event.attendees %>
         </ul>
     <% end %>
+
+     <div id="attending-form pt-5 mt-2">
+        <% unless @event.going?(current_user) %>
+            <span>
+                <%= link_to fa_icon('check', text: 'I want to go', class: 'text-success'), 
+                        rsvps_url(@rsvp, :event_id => @event.id),
+                        method: :post,
+                        class: 'btn btn-outline-success btn-block' %>
+            </span>
+        <% else %>
+            <span>
+                <%= link_to fa_icon('times', text: 'I do not want to go', class: 'text-danger'), 
+                            rsvp_url(current_user.rsvps.find_by(attended_event_id: @event.id)),
+                            method: :delete,
+                            class: 'btn btn-outline-danger btn-block' %>
+            </span>
+        <% end %>
+    </div>
 </div>

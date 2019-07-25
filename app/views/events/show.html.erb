@@ -7,9 +7,9 @@
 <div id="event-<%= @event.id %>" class="event show row">
     <div class="col-6">
         <h2>Description</h2>
-        <%= @event.description %>
+        <%= @event.description %>        
     </div>
-    <div class="col">
+    <div class="col-6">
         <h2>Info</h2>
         <table class="table info">
             <tr>
@@ -25,6 +25,12 @@
                 <td><%= link_to @event.creator.email, @event %></td>
             </tr>
         </table>
+    </div>
+    <hr class="mb-4" />
+    <div class="col-6">
         <%= render 'shared/attendance' %>
+    </div>
+    <div class="col-6">
+        <%= render 'shared/invite_users' if current_user == @event.creator %>
     </div>
 </div>
