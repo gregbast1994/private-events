@@ -1,0 +1,4 @@
+<%= form_for(current_user.rsvps.find_by(attendee_id: current_user.id),
+            html: { method: :delete }) do |f| %>
+    <%= f.submit "Miss", class: 'btn btn-danger' %>
+<% end %>

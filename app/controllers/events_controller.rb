@@ -7,7 +7,9 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find(params[:id])
-        @users = User.where.not(id: @event.attendees, id: @event.invited_users)
+        
+        ban_list = @event.attendees + @event.invited_users + [current_user]
+        @users = User.where.not(id: ban_list)
     end
 
     def create

@@ -1,6 +1,7 @@
-<% if invite %>
-    <div class="d-flex justify-content-between">
-        <p><%= invite.sender.name %> invited you to <%= invite.event.title %></p>
+<div class="invite-<%= invite.id %>">
+    <p><%= invite.sender.name %> invited you to <%= invite.event.title %></p>
+    <div class="d-flex">
         <%= link_to 'Accept', rsvps_url(@rsvp, :event_id => invite.event.id), method: :post %>
+        <%= link_to 'Reject', invites_url(invite), method: :delete %>
     </div>
-<% end %>
+</div>

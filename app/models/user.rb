@@ -13,13 +13,18 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
 
-    def has_invite_to(event)
-        ! self.invitations.where(event: event).nil?
+    def attending?(event)
+        attended_events.include?(event)
     end
 
-    def invitation_for(event)
-        self.invitations.find_by(event: event)
+    def attend(event)
+        attended_events << event
     end
+
+    def miss(event)
+        attended_events.delete(event)
+    end
+
 
     private
     def downcase_email

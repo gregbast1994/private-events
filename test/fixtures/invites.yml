@@ -2,7 +2,7 @@
 
 one:
   sender_id: 1
-  receiver_id: 2
+  receiver_id: 5
   event: 1
 
 two:

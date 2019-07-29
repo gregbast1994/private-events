@@ -7,20 +7,6 @@
     <% end %>
 
      <div id="attending-form pt-5 mt-2">
-        <% unless @event.going?(current_user) %>
-            <span>
-                <%= link_to fa_icon('check', text: 'I want to go', class: 'text-success'), 
-                        rsvps_url(@rsvp, :event_id => @event.id),
-                        method: :post,
-                        class: 'btn btn-outline-success btn-block' %>
-            </span>
-        <% else %>
-            <span>
-                <%= link_to fa_icon('times', text: 'I do not want to go', class: 'text-danger'), 
-                            rsvp_url(current_user.rsvps.find_by(attended_event_id: @event.id)),
-                            method: :delete,
-                            class: 'btn btn-outline-danger btn-block' %>
-            </span>
-        <% end %>
+        <%= render 'shared/attending_form' %>
     </div>
 </div>

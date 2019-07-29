@@ -7,7 +7,13 @@ class InvitesController < ApplicationController
         @invite.save ? flash[:success] = 'User invited' : 
                        flash[:danger] = 'Error'
                        
-        redirect_to event_path(params[:event_id])
+        redirect_to event_path(params[:event_id]) || root_url
+    end
+
+    def destroy
+        @invite = params[:id]
+        @invite.destroy
+        redirect_to response.referrers
     end
 
     private

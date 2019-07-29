@@ -1,6 +1,7 @@
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="event_invites" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Invites
+        <span class="badge badge-pill badge-dark text-light"><%= current_user.invitations.count %></span>
     </a>
     <div class="dropdown-menu" aria-labelledby="event_invites">
         <%= render current_user.invitations %>

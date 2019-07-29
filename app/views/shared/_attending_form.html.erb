@@ -1,0 +1,6 @@
+
+<% unless @event.going?(current_user) %>
+    <%= render 'rsvps/attend' %>
+ <% else %>
+    <%= render 'rsvps/miss' %>
+<% end %>

@@ -2,14 +2,9 @@ class RsvpsController < ApplicationController
     before_action :require_login
 
     def create
-        @rsvp = current_user.rsvps.build(attended_event_id: params[:event_id])
-        if @rsvp.save
-            flash.now[:success] = "Thanks"
-        else
-            flash.now[:danger] = "Error"
-        end
-        maybe_delete_invite(current_user.invitation_for(params[:event_id]))
-        redirect_back fallback_location: event_path(params[:event_id])
+        @event = Event.find(params[:attended_event_id])
+        current_user.attend(@event)
+        redirect_to @event
     end
 
     def update
@@ -22,6 +17,6 @@ class RsvpsController < ApplicationController
 
     private
     def rsvp_params
-        params.require(:rsvp).permit(:attended_event_id)
+        params.require(:rsvp).permit(:attended_event)
     end
 end
