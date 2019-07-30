@@ -11,7 +11,7 @@ class InvitesCreateTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     @user.invite(@other_user, @event)
     assert @other_user.has_invite_to?(@event)
-    @invite = @other_user.get_invite_it(@event)
+    @invite = @other_user.received_invites.last
     @other_user.reject(@invite)
     assert_not @other_user.has_invite_to?(@event)
   end

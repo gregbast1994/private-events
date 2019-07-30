@@ -31,6 +31,11 @@
         <%= render 'shared/attendance' %>
     </div>
     <div class="col-6">
-        <%= render 'shared/invite_users' if current_user == @event.creator %>
+        <h4>Invite people</h4>
+        <div class="invite_for">
+            <% @users.each do |user| %>
+                <%= render 'shared/invite_form', object: user %>
+            <% end %>
+        </div>
     </div>
 </div>

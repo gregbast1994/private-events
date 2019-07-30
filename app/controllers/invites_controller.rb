@@ -1,19 +1,22 @@
 class InvitesController < ApplicationController
     def create
-        @invite = Invite.new(sender: current_user,
-                             receiver_id: params[:receiver_id],
-                             event_id: params[:event_id])
+        @receiver = User.find(params[:receiver_id])
+        @event = Event.find(params[:event_id])
 
-        @invite.save ? flash[:success] = 'User invited' : 
-                       flash[:danger] = 'Error'
-                       
-        redirect_to event_path(params[:event_id]) || root_url
+        @invite = current_user.invite(@receiver, @event)
+        respond_to do |format|
+            format.html { redirect_to @event }
+            format.js
+        end
     end
 
     def destroy
-        @invite = params[:id]
-        @invite.destroy
-        redirect_to response.referrers
+        @invite = Invite.find(params[:id])
+        current_user.reject(@invite)
+        respond_to do |format|
+            format.html { redirect_to @event }
+            format.js
+        end
     end
 
     private

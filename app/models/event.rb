@@ -24,6 +24,6 @@ class Event < ApplicationRecord
     end
 
     def going?(user)
-        self.attendees.find_by(id: user.id)
+        attendees.find_by(id: user.id)
     end
 end

@@ -10,7 +10,7 @@ class User < ApplicationRecord
                                
 
     has_many :sent_invites, foreign_key: 'sender_id', 
-                           class_name: 'reInvite'
+                           class_name: 'Invite'
 
     has_many :received_invites, foreign_key: 'receiver_id', 
                            class_name: 'Invite'
@@ -24,10 +24,6 @@ class User < ApplicationRecord
 
     def has_invite_to?(event)
         ! received_invites.find_by(event: event).nil?
-    end
-
-    def get_invite_to(event)
-        ! received_invites.find_by(event: event)
     end
 
     def reject(invite)

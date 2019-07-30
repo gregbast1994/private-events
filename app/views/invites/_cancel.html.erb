@@ -1,0 +1,7 @@
+<%= form_for(object.received_invites.find_by(receiver_id: object.id),
+             html: { method: :delete }) do |f| %>
+    <div class="d-flex justify-content-between">
+        <span><%= object.name %></span>
+        <%= f.submit "Cancel", class: 'btn btn-danger' %>
+    </div>
+<% end %>

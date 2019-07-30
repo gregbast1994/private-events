@@ -1,0 +1,5 @@
+<% unless object.has_invite_to?(@event) %>
+    <%= render 'invites/send', object: object %>
+<% else %>
+    <%= render 'invites/cancel', object: object %>
+<% end %>

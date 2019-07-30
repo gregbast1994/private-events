@@ -1,0 +1,9 @@
+<%= form_for(current_user.sent_invites.build, remote: true ) do |f| %>
+    <div class="d-flex justify-content-between mt-2">
+        <%= object.name %>
+        <%= f.submit "Invite", class: 'btn btn-outline-success' %>
+    </div>
+
+    <%= hidden_field_tag :event_id, @event.id %>
+    <%= hidden_field_tag :receiver_id, object.id %>
+<% end %>
