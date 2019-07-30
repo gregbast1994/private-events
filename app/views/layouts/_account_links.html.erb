@@ -4,7 +4,7 @@
         <span class="badge badge-pill badge-dark text-light"><%= current_user.invitations.count %></span>
     </a>
     <div class="dropdown-menu" aria-labelledby="event_invites">
-        <%= render current_user.invitations %>
+        <%= render current_user.received_invites %>
     </div>
 </li>
 <li class="nav-item dropdown">

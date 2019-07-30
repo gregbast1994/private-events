@@ -7,11 +7,33 @@ class User < ApplicationRecord
     has_many :attended_events, :through => :rsvps,
                                :source => :attended_event
 
-    has_many :invitations, foreign_key: 'receiver_id', 
+                               
+
+    has_many :sent_invites, foreign_key: 'sender_id', 
+                           class_name: 'reInvite'
+
+    has_many :received_invites, foreign_key: 'receiver_id', 
                            class_name: 'Invite'
 
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
+
+    def invite(user, event)
+        sent_invites << Invite.new( receiver: user, event: event )
+    end
+
+    def has_invite_to?(event)
+        ! received_invites.find_by(event: event).nil?
+    end
+
+    def get_invite_to(event)
+        ! received_invites.find_by(event: event)
+    end
+
+    def reject(invite)
+        received_invites.delete(invite)
+    end
+
 
     def attending?(event)
         attended_events.include?(event)

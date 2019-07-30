@@ -7,13 +7,12 @@ class InvitesCreateTest < ActionDispatch::IntegrationTest
     @event = @user.events.first
   end
 
-  test 'should create invite for recipient' do
+  test 'invite another user, check for invite and reject invite' do
     log_in_as(@user)
-    assert_difference 'Invite.count' do
-      post invites_path, params: { invite: { receiver_id: @other_user.id, event_id: @event.id } }
-    end
-    assert_not_empty flash[:success]
-    log_in_as @other_user
-    assert_select "div.invite-#{Invite.last.id}"
+    @user.invite(@other_user, @event)
+    assert @other_user.has_invite_to?(@event)
+    @invite = @other_user.get_invite_it(@event)
+    @other_user.reject(@invite)
+    assert_not @other_user.has_invite_to?(@event)
   end
 end
